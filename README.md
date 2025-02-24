@@ -13,12 +13,5 @@ Chat Gopher — это приложение для обмена сообщени
 
 ### 1. Клонируйте репозиторий:
 
-```bash
 git clone https://github.com/DokPlay/chat-gopher.git
-cd chat-gopher```
-
-```bash
-2. Запуск через Docker
-Для упрощения развертывания, вы можете использовать Docker.
-
-Создайте файл .env с параметрами подключения к базе данных:
+cd chat-gopher

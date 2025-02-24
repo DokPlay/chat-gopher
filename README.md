@@ -13,5 +13,38 @@ Chat Gopher — это приложение для обмена сообщени
 
 ### 1. Клонируйте репозиторий:
 
+```bash
 git clone https://github.com/DokPlay/chat-gopher.git
 cd chat-gopher
+```
+
+2. Запуск через Docker
+Для упрощения развертывания, вы можете использовать Docker.
+
+Создайте файл .env с параметрами подключения к базе данных:
+```bash
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=username
+DB_PASSWORD=password
+DB_NAME=chat_gopher
+```
+Запустите контейнеры с помощью Docker Compose:
+```bash
+docker-compose up --build
+```
+Этот процесс развернет приложение и базу данных в Docker контейнерах. Приложение будет доступно на localhost:8080.
+
+3. Запуск без Docker
+Если вы предпочитаете запускать приложение без Docker, выполните следующие шаги:
+
+ 1.Установите зависимости:
+```bash
+go mod tidy
+```
+ 2.Запустите сервер:
+```bash
+go run main.go
+```
+Сервер будет запущен на http://localhost:8080.
+

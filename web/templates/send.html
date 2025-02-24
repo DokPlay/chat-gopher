@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Отправить сообщение</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+<h2>Отправить сообщение</h2>
+<form id="messageForm">
+    <label>Текст:</label><br/>
+    <input type="text" id="text" maxlength="128"/><br/><br/>
+    <label>Порядковый номер:</label><br/>
+    <input type="number" id="sequence"/><br/><br/>
+    <button type="submit">Отправить</button>
+</form>
+
+<div id="status"></div>
+
+<script>
+document.getElementById('messageForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const text = document.getElementById('text').value;
+    const sequence = parseInt(document.getElementById('sequence').value) || 0;
+
+    try {
+        const resp = await fetch('/api/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({text, sequence})
+        });
+        if (!resp.ok) {
+            document.getElementById('status').innerText = "Ошибка: " + resp.status;
+        } else {
+            const data = await resp.json();
+            document.getElementById('status').innerText = "Отправлено! ID: " + data.id;
+        }
+    } catch (err) {
+        document.getElementById('status').innerText = "Ошибка запроса: " + err;
+    }
+});
+</script>
+</body>
+</html>

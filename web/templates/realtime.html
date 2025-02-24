@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Реальное время</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+<h2>Сообщения в реальном времени</h2>
+<div id="messages"></div>
+
+<script>
+let ws = new WebSocket("ws://" + window.location.host + "/ws");
+
+ws.onopen = function() {
+    console.log("WebSocket открыт");
+};
+
+ws.onmessage = function(event) {
+    let msg = JSON.parse(event.data);
+    let div = document.createElement("div");
+    div.textContent = "ID=" + msg.id + ", Seq=" + msg.sequence + ", Text=" + msg.text + ", Time=" + msg.created_at;
+    document.getElementById('messages').appendChild(div);
+};
+
+ws.onclose = function() {
+    console.log("WebSocket закрыт");
+};
+</script>
+</body>
+</html>

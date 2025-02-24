@@ -145,6 +145,19 @@ ErrorResponse
 WebSocket: Сервер поддерживает подключение через WebSocket для обмена сообщениями в реальном времени.
 Конфигурация: Все параметры подключения к базе данных и другие настройки можно найти в файле конфигурации.
 
+    English Version:
+Chat Gopher
+Chat Gopher is a messaging application using WebSocket and Go. It supports sending and receiving messages, as well as storing messages in the database.
+
+Features:
+WebSocket-based real-time messaging.
+Creating messages with storage in the database.
+Historical message data can be fetched within a specified date range.
+Installation and Setup
+You can run the application using either Docker or a standard Go installation.
+
+1. Clone the repository:
+
 
 
 

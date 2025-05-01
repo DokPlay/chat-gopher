@@ -1,4 +1,4 @@
-[→ Читать по-русски (README.RU.md)](README.RU.md)
+[→ (README на русском языке)
 
 Chat Gopher
 Chat Gopher is a messaging application using WebSocket and Go. It supports sending and receiving messages, as well as storing messages in the database.

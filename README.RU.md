@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [→ Read in English (README.md)](README.md)
 # Chat Gopher
 

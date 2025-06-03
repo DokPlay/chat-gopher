@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [→ Читать по-русски (README.RU.md)](README.RU.md)
 
 Chat Gopher

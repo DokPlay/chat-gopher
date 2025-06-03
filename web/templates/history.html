@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>История сообщений</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+<h2>История сообщений</h2>
+
+<button id="load10min">Показать за последние 10 минут</button><br/><br/>
+
+<label>Свой интервал:</label><br/>
+От: <input type="text" id="from" placeholder="2023-01-01T00:00:00Z"/>
+До: <input type="text" id="to" placeholder="2023-01-01T01:00:00Z"/>
+<button id="loadInterval">Загрузить</button>
+
+<div id="messages"></div>
+
+<script>
+document.getElementById('load10min').addEventListener('click', async function() {
+    let toDate = new Date();
+    let fromDate = new Date(toDate.getTime() - (10 * 60 * 1000)); // 10 минут назад
+    await loadMessages(fromDate.toISOString(), toDate.toISOString());
+});
+
+document.getElementById('loadInterval').addEventListener('click', async function() {
+    const from = document.getElementById('from').value;
+    const to = document.getElementById('to').value;
+    await loadMessages(from, to);
+});
+
+async function loadMessages(from, to) {
+    let url = `/api/messages?from=${from}&to=${to}`;
+    let resp = await fetch(url);
+    let data = await resp.json();
+    let container = document.getElementById('messages');
+    container.innerHTML = "";
+    data.forEach(msg => {
+        let div = document.createElement("div");
+        div.textContent = "ID=" + msg.id + ", Seq=" + msg.sequence + ", Text=" + msg.text + ", Time=" + msg.created_at;
+        container.appendChild(div);
+    });
+}
+</script>
+</body>
+</html>

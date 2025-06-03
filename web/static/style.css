@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+}
+
+#messages div {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f1f1f1;
+}
